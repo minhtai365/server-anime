@@ -14,6 +14,14 @@ let proxy = corsAnywhere.createServer({
 });
 
 class Controller {
+  static async index(_req, res, next) {
+    try {
+
+      res.json({ success: true, data: 'xin chào'});
+    } catch (err) {
+      next(err);
+    }
+  }
   static async getRecentlyUpdated(_req, res, next) {
     try {
       const recentlyUpdatedList = await Model.recentlyUpdated();
@@ -23,6 +31,7 @@ class Controller {
       next(err);
     }
   }
+
 
   static async getInfo(req, res, next) {
     const { slug } = req.params;
