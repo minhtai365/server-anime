@@ -6,8 +6,8 @@
     "node": "14.x"
   },
   "scripts": {
-    "startt": "node ./index.js",
-    "start": "nodemon ./index.js"
+    "startt": "node ./bin/www",
+    "start": "nodemon ./bin/www"
   },
   "dependencies": {
     "axios": "^0.21.1",
