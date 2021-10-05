@@ -2,6 +2,9 @@
   "name": "server-story",
   "version": "0.0.0",
   "private": true,
+  "engines": {
+    "node": "14.x"
+  },
   "scripts": {
     "startt": "node ./bin/www",
     "start": "nodemon ./bin/www"
