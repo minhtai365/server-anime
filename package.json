@@ -1,0 +1,26 @@
+{
+  "name": "server-story",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "startt": "node ./bin/www",
+    "start": "nodemon ./bin/www"
+  },
+  "dependencies": {
+    "axios": "^0.21.1",
+    "cheerio": "^1.0.0-rc.10",
+    "cookie-parser": "~1.4.4",
+    "cors": "^2.8.5",
+    "cors-anywhere": "^0.4.4",
+    "debug": "~2.6.9",
+    "express": "~4.16.1",
+    "http-errors": "~1.6.3",
+    "jade": "^1.9.2",
+    "jsdom": "^17.0.0",
+    "morgan": "~1.9.1",
+    "puppeteer": "^10.2.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.12"
+  }
+}
