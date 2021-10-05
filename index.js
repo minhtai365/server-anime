@@ -15,8 +15,8 @@ var app = express();
 app.use(cors());
 
 // view engine setup
-// app.set('views', path.join(__dirname, 'views'));
-// app.set('view engine', 'jade');
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'jade');
 
 
 
@@ -52,6 +52,8 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
+var port = process.env.PORT || '4000';
+app.listen(port);
 module.exports = app;
 
 
