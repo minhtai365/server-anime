@@ -10,21 +10,21 @@ const axios = require('axios');
 // import {JSDOM} from 'jsdom';
 
 const getWebsiteContent = async (url) => {
-    // Simple HTTP call
-    const content = await fetch(url);
-    // Parsing to result as text
-    return content.text();
+  // Simple HTTP call
+  const content = await fetch(url);
+  // Parsing to result as text
+  return content.text();
 };
 
 
-const scrape = async (url,cssSelector)=> {
-    // Get the HTML of the URL
-    const websiteHtml = await getWebsiteContent(url);
-    // Create JSDOM to have a virtual DOM we can query
-    const dom = new JSDOM(websiteHtml);
-    const doc= dom.window.document;
-    // Search for the input element we want the value for and return it's value
-    return (doc.querySelector(cssSelector));
+const scrape = async (url, cssSelector) => {
+  // Get the HTML of the URL
+  const websiteHtml = await getWebsiteContent(url);
+  // Create JSDOM to have a virtual DOM we can query
+  const dom = new JSDOM(websiteHtml);
+  const doc = dom.window.document;
+  // Search for the input element we want the value for and return it's value
+  return (doc.querySelector(cssSelector));
 };
 
 /**
@@ -32,22 +32,24 @@ const scrape = async (url,cssSelector)=> {
  * and posting its result
  */
 const main = async () => {
-    // Prepare our variables
-    const url = 'https://www.google.com';
-    const cssSelector= 'form input[type=submit]';
-    // Run the Crawler
-    const scrapeResult = await scrape(url, cssSelector);
-    // Print the parameters + result
-    console.log('---------------------');
-    console.log(`Crawling URL: '${url}'`);
-    console.log(`CSS Selector : '${cssSelector}'`);
-    console.log('---------------------');
-    console.log(`Result: '${scrapeResult}'\n`);
+  // Prepare our variables
+  const url = 'https://www.google.com';
+  const cssSelector = 'form input[type=submit]';
+  // Run the Crawler
+  const scrapeResult = await scrape(url, cssSelector);
+  // Print the parameters + result
+  console.log('---------------------');
+  console.log(`Crawling URL: '${url}'`);
+  console.log(`CSS Selector : '${cssSelector}'`);
+  console.log('---------------------');
+  console.log(`Result: '${scrapeResult}'\n`);
 };
 
 
 
-
+router.get('/', function (req, res, next) {
+  res.send('respond with a resource');
+});
 
 /* GET home page. */
 router.post('/getlink', function (req, res, next) {
@@ -99,15 +101,15 @@ const instance = axios.create({
     Referer: "https://vuighe.net/idoly-pride"
   }
 });
-router.post('/getlink/page',async function (req, res, next) {
+router.post('/getlink/page', async function (req, res, next) {
   const cheerio = require('cheerio');
   // const url = 'https://vuighe.net/' + req.body.pageget;
   const url = 'https://vuighe.net/api/v2/films/6723/episodes?sort=name';
- 
+
   // main();
 
   const { data } = await instance.get(url);
-    console.log(data);
+  console.log(data);
   // console.log(typeof(data.data));
   // const { window } = new JSDOM(data.data,{ runScripts: "dangerously", resources: "usable" });
   // const { document } = window;
@@ -152,7 +154,7 @@ router.post('/getlink/page',async function (req, res, next) {
   //       // const time = $(this).find('a > .chapter-time').text();
   //       // const nationality = $(this).find('.playerCountry').text();
 
-        
+
   //       listChap.push({
   //         href,
   //         title,
@@ -173,9 +175,9 @@ router.get('/gethome', function (req, res, next) {
   const axios = require('axios');
   const cheerio = require('cheerio');
   const url = 'https://vuighe.net/';
-  const opp ={
-    url:url,
-    timeout:5000
+  const opp = {
+    url: url,
+    timeout: 5000
   }
   axios(opp)
     .then(response => {
